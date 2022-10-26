@@ -65,7 +65,7 @@ jobs:
         run: docker login -u="${QUAY_USERNAME}" -p="${QUAY_PASSWORD}" quay.io
 
       - name: Build and push image
-        run: docker buildx build . --file build/Dockerfile --tag ${{ inputs.image_name }}:${{ inputs.image_tag }} --tag ${{ inputs.image_name }}:latest --build-arg image_version=${{ inputs.image_tag }} --build-arg client=${{ inputs.client }} --platforms linux/amd64,linux/arm64 --push
+        run: docker buildx build . --file build/Dockerfile --tag ${{ inputs.image_name }}:${{ inputs.image_tag }} --tag ${{ inputs.image_name }}:latest --build-arg image_version=${{ inputs.image_tag }} --build-arg client=${{ inputs.client }} --platform linux/amd64,linux/arm64 --push
       
       - name: Install cosign
         uses: sigstore/cosign-installer@main
