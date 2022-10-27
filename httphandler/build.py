@@ -55,7 +55,10 @@ def main():
         ldflags += " -X {}={}".format(build_url, release_version)
     if client_name:
         ldflags += " -X {}={}".format(client_var, client_name)
- 
+    
+    # remove cache before building
+    os.system("rm -rf ~/.cache/go-build")
+
     build_command = ["go", "build", "-tags=static", "-o", ks_file, "-ldflags" ,ldflags]
 
     print("Building kubescape and saving here: {}".format(ks_file))
