@@ -9,6 +9,7 @@ import (
 	"runtime"
 
 	logger "github.com/kubescape/go-logger"
+	"github.com/kubescape/go-logger/helpers"
 	"github.com/kubescape/kubescape/v2/core/cautils"
 	"github.com/spf13/cobra"
 )
@@ -22,7 +23,7 @@ func GetUpdateCmd() *cobra.Command {
 			//Checking the user's version of kubescape to the latest release
 			if cautils.BuildNumber == cautils.LatestReleaseVersion {
 				//your version == latest version
-				logger.L().Info(("You are in the latest version"))
+				logger.L().Info("You are the running the latest version", helpers.String("version", cautils.BuildNumber))
 			} else {
 
 				const OSTYPE string = runtime.GOOS
@@ -48,7 +49,6 @@ func GetUpdateCmd() *cobra.Command {
 					if err != nil {
 						logger.L().Fatal(err.Error())
 					}
-
 					cautils.StopSpinner()
 				}
 			}

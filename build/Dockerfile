@@ -1,4 +1,4 @@
-FROM golang:1.18-alpine as builder
+FROM golang:1.18-alpine3.16 as builder
 
 ARG image_version
 ARG client
@@ -12,7 +12,7 @@ ENV CGO_ENABLED=1
 
 # Install required python/pip
 ENV PYTHONUNBUFFERED=1
-RUN apk add --update --no-cache python3 git openssl-dev musl-dev gcc make cmake pkgconfig && ln -sf python3 /usr/bin/python
+RUN apk add --update --no-cache python3 git openssl-dev musl-dev gcc binutils-gold make cmake pkgconfig && ln -sf python3 /usr/bin/python
 RUN python3 -m ensurepip
 RUN pip3 install --no-cache --upgrade pip setuptools
 
