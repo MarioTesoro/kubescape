@@ -107,7 +107,7 @@
               "type": "prometheus",
               "uid": "prometheus"
             },
-            "expr": "kubescape_cluster_riskScore",
+            "expr": "kubescape_cluster_complianceScore",
             "refId": "A"
           }
         ],
@@ -198,7 +198,7 @@
             },
             "editorMode": "code",
             "exemplar": false,
-            "expr": "sum (kubescape_control_riskScore) by (name)",
+            "expr": "sum (kubescape_control_complianceScore) by (name)",
             "instant": false,
             "interval": "",
             "legendFormat": "{{link}}",
@@ -315,7 +315,7 @@
             },
             "editorMode": "code",
             "exemplar": false,
-            "expr": "sum(kubescape_framework_riskScore) by (name)",
+            "expr": "sum(kubescape_framework_complianceScore) by (name)",
             "hide": false,
             "instant": true,
             "legendFormat": "{{name}}",
